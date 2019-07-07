@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit:300&amp;subset=latin-ext,thai">    
+    <title>Diary Report</title>
+    <script>
+    </script>
+  </head>
+<body>
+
+  <div class="container-fluid">
+    <div class="page">
+      <h2>Diary Report</h2>
+      <h3><%= Date %></h3>
+      <hr>
+      <div style="text-align: right;">
+         
+        <div class="ui small basic icon buttons">
+          <button class="ui button"><a href="/NodeSheet/pdf">EXPORT TO PDF <i class="file icon"></i></a></button>
+        </div>
+      </div>
+      
+      <!-- <div class="table-responsive"> -->
+      <table class="ui unstackable table">
+        <thead>
+          <tr>
+            <% for(var j=0; j<7; j++) {%>  
+            <th class="th<%= j %>""><%= data[0][j]%></th>
+            <% } %>   
+          </tr>
+        </thead>
+        <tbody data-spy="scroll">
+        <% for(var i=1; i<data.length; i++) {%>
+          <tr>
+            <% for(var h=0; h<7; h++) {%>  
+              <td class="th<%= h %>"><%= data[i][h]%> </td>
+            <% } %>
+          </tr>
+        <% } %>
+        </tbody>
+      </table> 
+      <!-- </div> -->
+      <hr>
+      <br>
+      <br>
+      <br>
+      <h3>Images</h3>
+      <hr>
+      <% if (image.length == 0) {%>
+        <h4>Image not found</h4>
+      <% } %>
+      <% for(var l=0; l<image.length; l++) {%> 
+          <!-- <a href="<%= image[l] %>">
+            <img src="<%= image[l] %>">
+          </a>  -->
+          <a href="<%= image[l] %>" class="ui medium image">
+            <img src="<%= image[l] %>" class="ui medium rounded image">
+          </a> 
+        <!-- <img src="<%= image[l] %>" style="width:128px;height:128px;"> -->
+      <% } %> 
+    </div>
+  </div>
+</body>
+
+
+</html>
+
+<style type ="text/css">
+  @media (max-width: 400px){
+    body, html {
+      height: 100%;
+      font-size: 12px;
+      zoom:0.8;
+    }
+    .th0, .th1, .th4, .th5, .th6{
+      font-size: 12px;
+      width: 11%;
+    }
+    .th2, .th3{
+      font-size: 12px;
+      width: 26%;
+    }
+  }
+  @page {
+    size: A4;
+    margin: 0;
+    font-family: 'Kanit', sans-serif;
+  }
+  @media print {
+    html, body {
+      width: 210mm;
+      height: 297mm;
+      font-family: 'Kanit', sans-serif;
+    }
+  }
+  .page{
+    width: 210mm;
+    min-height: 297mm;
+    padding: 0 10mm;
+    margin: 10mm auto;
+    background: white;
+  }
+  body {
+    font-family: 'Kanit', sans-serif;
+    display: grid;
+    grid-template-rows: auto;
+    justify-items: center;
+    align-items: center;
+    margin: 0 auto;
+    /* overflow-y:hidden; */
+  }
+  body, html {
+    height: 100%;
+    font-size: 12px;
+    /* zoom:0.8; */
+    /* position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0; */
+  }
+  tr{
+    width: 100%;
+  }
+  .main{
+    margin: 20px 0 50px 0;
+    padding: 30px;
+  }
+  .th0, .th1, .th4, .th5, .th6{
+    font-size: 12px;
+    width: 11%;
+  }
+  .th2, .th3{
+    font-size: 12px;
+    width: 26%;
+  }
+  /* .th6{
+    font-size: 12px;
+    width: 16%;
+  } */
+  tbody{
+    display:block;
+    width: 100%;
+    /* overflow: auto;
+    height: 700px; */
+  }
+
+  thead tr {
+    width: 100%;
+    display: block;
+  }
+
+  th, td {
+    padding: 5px;
+    text-align: left;
+  }
+
+
+</style>

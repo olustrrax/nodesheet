@@ -21,7 +21,7 @@
     "firebase-functions": "^3.0.0",
     "googleapis": "^40.0.1",
     "html-pdf": "^2.2.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "xhr2": "^0.2.0"
   },
   "devDependencies": {
